@@ -1,0 +1,23 @@
+.completed-count{
+    font-weight: 700;
+    font-size: 18px;
+    color: #000;
+}
+.achievements-list{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    max-height: 420px;
+    overflow-y: scroll;
+    padding-right: 8px;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #0000002A;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #000;
+    }
+}

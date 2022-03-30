@@ -1,0 +1,75 @@
+.bg-img{
+    position: absolute;
+    pointer-events: none;
+    height: 100%;
+    z-index: -1;
+}
+.bg-city{
+    filter: saturate(0) brightness(0.25);
+    width: 100%;
+    object-fit: cover;
+}
+.bg-smoke{
+    object-fit: contain;
+    right: 0;
+}
+.bg-aiden{
+    right: -20%;
+    opacity: 0.15;
+    width: auto;
+    object-fit: contain;
+}
+@media (max-width: 1439px){
+    .bg-aiden{
+        display: none;
+    }
+    .bg-smoke{
+        display: none;
+    }
+    .bg-img{
+    }
+}
+.container-divide{
+    display: flex;
+    margin: 0 4em;
+    position: relative;
+    > div{
+        position: absolute;
+        width: 900px;
+        flex-shrink: 0;
+    }
+}
+@media (max-width: 1439px){
+    .container-divide{
+        flex-flow: column nowrap;
+        > div{
+            position: unset;
+        }
+    }
+}
+.challenges-container{
+    display: flex;
+    gap: 5em;
+    margin-top: 8em;
+    left: 0;
+    .completed{
+        margin-top: 4em;
+    }
+}
+.achievements-container{
+    right: 0;
+    .achievements{
+        margin-top: 10em;
+        width: fit-content;
+        margin-left: auto;
+    }
+    .recent{
+        width: fit-content;
+        margin: 2em auto 0;
+    }
+}
+@media (max-width: 1600px){
+    .container-divide{
+        margin: 0 2em;
+    }
+}

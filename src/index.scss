@@ -1,0 +1,61 @@
+@import "fonts.scss";
+
+:root{
+    --color-red: #DB0811;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: "Gibson";
+    color: #fff;
+}
+#root{
+    position: relative;
+}
+@media (max-width: 1439px){
+    body{
+        overflow: auto;
+        height: auto;
+    }
+}
+h1,h2,h3,h4{
+    font-family: "Bebas Neue";
+    letter-spacing: 0.06em;
+    font-weight: 400;
+}
+h1{
+    font-size: 58px;
+}
+h2{
+    font-size: 54px;
+}
+h3{
+    font-size: 40px;
+}
+h4{
+    font-size: 38px;
+    letter-spacing: 0.03em;
+}
+.text-center{
+    text-align: center;
+}
+.btn-ico{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.text-red{
+    color: var(--color-red);
+}
+.text-black{
+    color: #000;
+}

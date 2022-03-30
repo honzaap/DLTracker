@@ -1,0 +1,39 @@
+.challenge{
+    position: relative;
+    .challenge-content{
+        margin: 0.5em 1.5em;
+        position: absolute;
+        height: 100%;
+        inset: 0;
+        color: #000;
+        h5{
+            font-size: 22px;
+            font-weight: 400;
+        }
+        p{
+
+        }
+        .progress-bar{
+            display: flex;
+            padding-right: 0.5em;
+            gap: 0.5em;
+            .progress-container{
+                flex-grow: 1;
+                outline: 2px solid black;
+                margin-block: 5px;
+                .progress{
+                    height: 100%;
+                    background-color: var(--color-red);
+                }
+            }
+        }
+        .options{
+            position: absolute;
+            top: 0;
+            right: 0;
+            button{
+                margin-inline: 0.2em;
+            }
+        }
+    }
+}

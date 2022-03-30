@@ -1,0 +1,18 @@
+.completed-challenges-list{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    max-height: 300px;
+    overflow-y: scroll;
+    padding-right: 8px;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #FFFFFFA0;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #FFF;
+    }
+}

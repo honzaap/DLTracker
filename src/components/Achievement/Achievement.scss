@@ -1,0 +1,22 @@
+.achievement{
+    position: relative;
+    color: #fff;
+    .bg{
+        z-index: -1;
+        height: 100%;
+    }
+    .content{
+        position: absolute;
+        inset: 0;
+        display: flex;
+        gap: 0.35em;
+        h5{
+            font-size: 20px;
+        }
+        .thumbnail{
+            object-fit: contain;
+            height: 70px;
+            padding: 5px;
+        }
+    }
+}
