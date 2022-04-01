@@ -32,19 +32,12 @@
 .container-divide{
     display: flex;
     margin: 0 4em;
-    position: relative;
+    justify-content: space-between;
+    //position: relative;
     > div{
-        position: absolute;
-        width: 900px;
+        //position: absolute;
+        //width: 900px;
         flex-shrink: 0;
-    }
-}
-@media (max-width: 1439px){
-    .container-divide{
-        flex-flow: column nowrap;
-        > div{
-            position: unset;
-        }
     }
 }
 .challenges-container{
@@ -71,5 +64,21 @@
 @media (max-width: 1600px){
     .container-divide{
         margin: 0 2em;
+    }
+}
+@media (max-width: 1439px){
+    .container-divide{
+        flex-flow: column nowrap;
+        margin: 0;
+        padding-bottom: 3em;
+        align-items: center;
+        > div{
+            position: unset;
+        }
+    }
+    .achievements-container{
+        .achievements{
+            margin-top: 3em;
+        }
     }
 }

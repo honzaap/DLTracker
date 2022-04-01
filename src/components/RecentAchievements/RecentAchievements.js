@@ -2,7 +2,7 @@ import "./RecentAchievements.scss";
 
 const RecentAchievements = ({achievements}) => {
     return (
-        <div>
+        <>
             <h4 className="text-black recent-title">Recently Completed</h4>
             <div className="recent-list-container">
                 <div className="recent-list">
@@ -14,7 +14,7 @@ const RecentAchievements = ({achievements}) => {
                 </div>
                 <img className="mask" src={require("../../images/containers/recent_achievements_mask.png")} />
             </div>
-        </div>
+        </>
     );
 };
 

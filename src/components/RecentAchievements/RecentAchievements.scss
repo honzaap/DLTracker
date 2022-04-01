@@ -1,10 +1,16 @@
 .recent-title{
     margin-left: 50px;
 }
+@media (max-width: 1439px){
+    .recent-title{
+        color: #fff;
+        margin-left: 0;
+        text-align: center;
+    }
+}
 .recent-list-container{
     position: relative;
     max-width: 550px;
-    margin-right: 50px;
     color: #000;
     font-size: 18px;
     text-align: center;
