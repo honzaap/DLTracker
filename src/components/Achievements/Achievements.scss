@@ -3,11 +3,6 @@
     font-size: 18px;
     color: #000;
 }
-@media (max-width: 1439px){
-    .completed-count{
-        color: #fff;
-    }
-}
 .achievements-list{
     margin-top: 1em;
     display: flex;
@@ -24,5 +19,10 @@
     }
     &::-webkit-scrollbar-thumb {
         background: #000;
+    }
+}
+@media (max-width: 1439px){
+    .completed-count{
+        color: #fff;
     }
 }

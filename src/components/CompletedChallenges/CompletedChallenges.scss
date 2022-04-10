@@ -16,3 +16,8 @@
         background: #FFF;
     }
 }
+@media (max-width: 1023px){
+    .completed-challenges-list{
+        gap: 0.75em;
+    }
+}

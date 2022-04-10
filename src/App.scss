@@ -26,8 +26,6 @@
     .bg-smoke{
         display: none;
     }
-    .bg-img{
-    }
 }
 .container-divide{
     display: flex;
@@ -77,8 +75,22 @@
         }
     }
     .achievements-container{
+        align-self: stretch;
         .achievements{
             margin-top: 3em;
+            margin-right: 3em;
+        }
+    }
+}
+@media (max-width: 1023px){
+    .challenges-container{
+        flex-direction: column;
+        gap: 0;
+    }
+    .achievements-container{
+        align-self: stretch;
+        .achievements{
+            margin-right: auto;
         }
     }
 }
