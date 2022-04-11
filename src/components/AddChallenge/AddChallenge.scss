@@ -1,0 +1,9 @@
+.add-challenge-form{
+    padding: 0.5em 0 1em;
+    width: 100%;
+}
+@media (max-width: 1439px){
+    .add-challenge-form{
+        position: absolute;
+    }
+}

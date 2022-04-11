@@ -158,10 +158,11 @@ function App() {
 			<AddChallenge onAdd={addChallenge}></AddChallenge>
 			*/ 
 			}
-			<div className={"container-divide"}>
+			<div className="container-divide">
 				<div className="challenges-container">
 					<div>
 						<Challenges challenges={challenges} onComplete={completeChallenge} onRemove={removeChallenge}></Challenges>
+						<AddChallenge></AddChallenge>
 					</div>
 					<div className="completed">
 						<CompletedChallenges challenges={challenges} onRemove={removeChallenge}></CompletedChallenges>

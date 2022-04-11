@@ -3,20 +3,20 @@ import "./Challenge.scss";
 
 const Challenge = ({challenge, onComplete, onRemove, type}) => {
     return (
-        <div className={"challenge"}>
+        <div className="challenge">
             <img src={require(`../../images/containers/challenge_container_${type}.png`)}/>
             <div className="challenge-content">
                 <h5>{challenge.title}</h5>
                 <p>{challenge.description}</p>
-                <div className={"progress-bar"}>
+                <div className="progress-bar">
                     <span>{challenge.progress}</span>
                     <div className="progress-container">
-                        <div className={"progress"}></div>
+                        <div className="progress"></div>
                     </div>
                     <span>{challenge.value}</span>
                     <button className="btn-ico text-red"><FaPlus></FaPlus></button>
                 </div>
-                <div className={"options"}>
+                <div className="options">
                     <button className="btn-ico" onClick={onComplete}><FaCheck></FaCheck></button>
                     <button className="btn-ico"><FaEllipsisH></FaEllipsisH></button>
                 </div>

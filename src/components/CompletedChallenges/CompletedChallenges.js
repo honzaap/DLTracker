@@ -4,7 +4,7 @@ import CompletedChallenge from "../CompletedChallenge/CompletedChallenge";
 const CompletedChallenges = ({challenges, onRemove}) => {
   return (
       <div>
-        <h3>Completed challenges</h3>
+        <h3 className="completed-challenges-title">Completed challenges</h3>
         <div className="completed-challenges-list">
             {challenges.map((cl, idx) => (
                 <CompletedChallenge key={cl.id} challenge={cl} onRemove={onRemove} type={idx%2+1}></CompletedChallenge>

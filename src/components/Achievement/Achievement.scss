@@ -4,6 +4,8 @@
     .bg{
         z-index: -1;
         height: 100%;
+        width: 450px;
+        max-width: 95vw;
     }
     .content{
         position: absolute;
@@ -17,6 +19,21 @@
             object-fit: contain;
             height: 70px;
             padding: 5px;
+        }
+    }
+}
+@media (max-width: 560px) {
+    .achievement{
+        .bg{
+            min-height: 70px;
+        }
+        .content{
+            h5{
+                font-size: 16px;
+            }
+            p{
+                font-size: 14px;
+            }
         }
     }
 }

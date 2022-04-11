@@ -1,5 +1,9 @@
 .challenge{
     position: relative;
+    > img{
+        width: 400px;
+        max-width: 95vw;
+    }
     .challenge-content{
         margin: 0.5em 1.5em;
         position: absolute;
@@ -9,9 +13,6 @@
         h5{
             font-size: 22px;
             font-weight: 400;
-        }
-        p{
-
         }
         .progress-bar{
             display: flex;
@@ -33,6 +34,19 @@
             right: 0;
             button{
                 margin-inline: 0.2em;
+            }
+        }
+    }
+}
+@media (max-width: 560px){
+    .challenge{
+        .challenge-content{
+            font-size: 14px;
+            h5{
+                font-size: 18px;
+            }
+            p{
+                white-space: nowrap;
             }
         }
     }

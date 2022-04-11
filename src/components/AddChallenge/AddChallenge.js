@@ -1,9 +1,12 @@
 import { useState } from "react";
+import InputGroup from "../shared/InputGroup/InputGroup"
+import "./AddChallenge.scss"
 
 const AddChallenge = ({ onAdd }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-
+    const [value, setValue] = useState("");
+    
     const onSubmit = (e) => {
         e.preventDefault();
         if(!title){
@@ -12,7 +15,8 @@ const AddChallenge = ({ onAdd }) => {
 
         onAdd({
             title: title,
-            description: description
+            description: description,
+            value: value
         });
 
         setTitle("");
@@ -20,16 +24,11 @@ const AddChallenge = ({ onAdd }) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <div>
-                <label>Title</label>
-                <input type="text" placeholder="Challenge Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
-            </div>
-            <div>
-                <label>Description</label>
-                <input type="text" placeholder="Challenge Description" value={description} onChange={(e) => setDescription(e.target.value)}/>
-            </div>
-            <button type="submit">Add Challenge</button>
+        <form onSubmit={onSubmit} className="add-challenge-form">
+            <InputGroup id="add_Title" defaultValue={title} onChange={(e) => { setTitle(e) }} label="Title" placeholder="Kill zombies"></InputGroup>
+            <InputGroup id="add_Desc" defaultValue={description} onChange={(e) => { setDescription(e) }} label="Description" placeholder="Kill zombies using any weapon"></InputGroup>
+            <InputGroup id="add_Value" defaultValue={value} onChange={(e) => { setValue(e) }} label="Value" placeholder="How many times?"></InputGroup>
+            <button className="btn-dl" type="submit">Add Challenge</button>
         </form>
     );
 };
