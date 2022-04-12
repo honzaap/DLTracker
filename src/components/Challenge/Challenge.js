@@ -8,7 +8,7 @@ const Challenge = ({challenge, onComplete, onRemove, type}) => {
             <div className="challenge-content">
                 <h5>{challenge.title}</h5>
                 <p>{challenge.description}</p>
-                <div className="progress-bar">
+                <div className={`progress-bar ${challenge.value <= 1 ? "hide" : ""}`}>
                     <span>{challenge.progress}</span>
                     <div className="progress-container">
                         <div className="progress"></div>

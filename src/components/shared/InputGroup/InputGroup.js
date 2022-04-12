@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./InputGroup.scss";
 
-const InputGroup = ({id, onChange, label, placeholder, defaultValue, type="text"}) => {
+const InputGroup = ({id, onChange, label, placeholder, defaultValue, required, type="text"}) => {
     const [fieldFocus, setFieldFocus] = useState("");
     const [value, setValue] = useState(defaultValue);
 
@@ -9,7 +9,7 @@ const InputGroup = ({id, onChange, label, placeholder, defaultValue, type="text"
         <div className="input-group">
             <label className={fieldFocus ? "focus" : ""} htmlFor={id}>{label}</label>
             <div className="input-wrap">
-                <input id={id} type={type} placeholder={placeholder} value={value} onFocus={() => {setFieldFocus(true)}}
+                <input required={required} id={id} type={type} placeholder={placeholder} value={value} onFocus={() => {setFieldFocus(true)}}
                 onBlur={() => {setFieldFocus(false)}} onChange={(e) => {setValue(e.target.value); onChange(value)}}
                 autoComplete="off"
                 />

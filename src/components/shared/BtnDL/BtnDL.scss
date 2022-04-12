@@ -1,0 +1,29 @@
+.btn-dl{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    font-size: inherit;
+    margin-top: 0.5em;
+    .border{
+        display: none;
+        position: absolute;
+        top: -5px;
+        left: -7px;
+    }
+    > span{
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &:hover{
+        .border{
+            display: block;
+        }
+    }
+}

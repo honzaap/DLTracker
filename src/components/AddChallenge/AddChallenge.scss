@@ -1,9 +1,49 @@
-.add-challenge-form{
+.add-challenge-form-container{
     padding: 0.5em 0 1em;
-    width: 100%;
+    z-index: 2;
+    display: inline-block;
+    form{
+        transition: all 400ms ease;
+        overflow: hidden;
+        &.expanded{
+            overflow: visible;
+        }
+        &:not(.show){
+            overflow: hidden;
+            height: 0 !important;
+        }
+    }
+}
+.form-toggle{
+    color: var(--color-red);
+    text-align: right;
+    display: block;
+    cursor: pointer;
+    margin-top: 5px;
+    svg{
+        vertical-align: bottom;
+        transition: transform 400ms ease;
+    }
+    &:hover{
+        svg.up{
+            transform: translateY(-3px);
+        }
+        svg.down{
+            transform: translateY(3px);
+        }
+    }
 }
 @media (max-width: 1439px){
-    .add-challenge-form{
+    .add-challenge-form-container{
         position: absolute;
+    }
+}
+@media (max-width: 1023px){
+    .add-challenge-form-container{
+        display: block;
+        position: unset;
+    }
+    .form-toggle{
+        text-align: center;
     }
 }
