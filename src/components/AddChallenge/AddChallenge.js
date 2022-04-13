@@ -4,7 +4,7 @@ import BtnDL from "../shared/BtnDL/BtnDL";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa"
 import "./AddChallenge.scss"
 
-const AddChallenge = ({ onAdd }) => {
+const AddChallenge = ({ onAdd, onToggleForm }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [value, setValue] = useState("");
@@ -38,6 +38,7 @@ const AddChallenge = ({ onAdd }) => {
 
     const onShowForm = () => {
         setShowForm(!showForm);
+        onToggleForm(showForm)
         setTimeout(() => {
             setExpandedForm(!expandedForm)
         }, 400);

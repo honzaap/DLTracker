@@ -1,4 +1,5 @@
 import { FaQuestionCircle } from "react-icons/fa"
+import BtnDL from "../shared/BtnDL/BtnDL";
 import "./CompletedChallenge.scss";
 
 const CompletedChallenge = ({challenge, onRemove, type}) => {
@@ -9,7 +10,12 @@ const CompletedChallenge = ({challenge, onRemove, type}) => {
 				<div className="content">
 					<p>{challenge.title}</p>
 					<p className="text-red">{challenge.value > 0 ? `${challenge.value}/${challenge.value}` : '1/1'}</p>
-					<FaQuestionCircle className="btn-ico info"></FaQuestionCircle>
+					<button className="btn-ico info"><FaQuestionCircle></FaQuestionCircle></button>
+					<div className="menu-info">
+						<p>{challenge.description}</p>
+						<p>Completed on: <span className="text-red">10.04.2022{/*challenge.timeCompleted*/}</span></p>
+						<BtnDL text="Return to challenges" dark={true}></BtnDL>
+					</div>
 				</div>
 			</div>
 			<div className="completed-challenge">
@@ -17,7 +23,12 @@ const CompletedChallenge = ({challenge, onRemove, type}) => {
 				<div className="content">
 					<p>{challenge.title}</p>
 					<p className="text-red">{challenge.value > 0 ? `${challenge.value}/${challenge.value}` : '1/1'}</p>
-					<FaQuestionCircle className="btn-ico info"></FaQuestionCircle>
+					<button className="btn-ico info"><FaQuestionCircle></FaQuestionCircle></button>
+					<div className="menu-info">
+						<p>{challenge.description}</p>
+						<p>Completed on: <span className="text-red">10.04.2022{/*challenge.timeCompleted*/}</span></p>
+						<BtnDL text="Return to challenges" dark={true}></BtnDL>
+					</div>
 				</div>
 			</div>
 		</>

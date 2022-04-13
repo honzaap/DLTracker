@@ -5,6 +5,7 @@ import AddChallenge from "./components/AddChallenge/AddChallenge";
 import CompletedChallenges from "./components/CompletedChallenges/CompletedChallenges";
 import Achievements from "./components/Achievements/Achievements";
 import RecentAchievements from "./components/RecentAchievements/RecentAchievements";
+import PlayerActivity from "./components/PlayerActivity/PlayerActivity";
 
 function App() {
     const [challenges, setChallenges] = useState(
@@ -109,6 +110,7 @@ function App() {
 			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
 		},
 	]);
+	const [isActivityCompact, setIsActivityCompact] = useState(false);
 
 	// Fetch achievements on load 
 	useEffect(() => {
@@ -149,6 +151,11 @@ function App() {
 		setChallenges(challenges.filter(cl => cl.id !== id));
 	}
 
+	// Method that runs everytime the Add new challenge form is toggled
+	const onToggleForm = (isFormHidden) => {
+		setIsActivityCompact(!isFormHidden);
+	}
+
 	return (
 		<>	
 			<img className="bg-img bg-city" src={require('./images/background_city.jpg')} />
@@ -162,7 +169,7 @@ function App() {
 				<div className="challenges-container">
 					<div>
 						<Challenges challenges={challenges} onComplete={completeChallenge} onRemove={removeChallenge}></Challenges>
-						<AddChallenge></AddChallenge>
+						<AddChallenge onToggleForm={onToggleForm}></AddChallenge>
 					</div>
 					<div className="completed">
 						<CompletedChallenges challenges={challenges} onRemove={removeChallenge}></CompletedChallenges>
@@ -176,6 +183,9 @@ function App() {
 						<RecentAchievements achievements={achievements}></RecentAchievements>
 					</div>
 				</div>
+			</div>
+			<div className="activity">
+				<PlayerActivity isCompact={isActivityCompact}></PlayerActivity>
 			</div>
 		</>
 	);

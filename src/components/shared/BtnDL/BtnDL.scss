@@ -12,6 +12,9 @@
         position: absolute;
         top: -5px;
         left: -7px;
+        &.dark{
+            filter: brightness(0);
+        }
     }
     > span{
         display: block;

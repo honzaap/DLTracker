@@ -1,0 +1,44 @@
+.player-activity-container{
+    overflow: hidden;
+    .active{
+        color: rgb(124, 159, 53);
+    }
+    .online{
+        color: rgb(78, 183, 203);
+    }
+    .offline{
+        color: rgb(97, 97, 97);
+    }
+    svg{
+        vertical-align: middle;
+        margin-bottom: 2px;
+        font-size: 14px;
+    }
+    span{
+        display: inline-block;
+    }
+    p{
+        transition: transform 300ms ease;
+        &.status{
+            span{
+                transition: transform 300ms ease;
+                &.hide{
+                    transform: translateX(-120%);
+                }
+            }
+        }
+        &.show{
+            transform: none !important;
+        }
+    }
+}
+@media (max-width: 1439px){
+    .player-activity-container{
+        p{
+            transform: none !important;
+            &.status span.hide{
+                transform: none;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { FaTimes, FaCheck, FaEllipsisH, FaPlus } from "react-icons/fa"
+import { FaTrashAlt, FaCheck, FaEllipsisH, FaPlus } from "react-icons/fa"
 import "./Challenge.scss";
 
 const Challenge = ({challenge, onComplete, onRemove, type}) => {
@@ -18,7 +18,10 @@ const Challenge = ({challenge, onComplete, onRemove, type}) => {
                 </div>
                 <div className="options">
                     <button className="btn-ico" onClick={onComplete}><FaCheck></FaCheck></button>
-                    <button className="btn-ico"><FaEllipsisH></FaEllipsisH></button>
+                    <button className="btn-ico btn-menu"><FaEllipsisH></FaEllipsisH></button>
+                    <div className="challenge-menu">
+                        <button className="text-red"><FaTrashAlt></FaTrashAlt> Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

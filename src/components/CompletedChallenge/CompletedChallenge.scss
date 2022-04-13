@@ -18,6 +18,26 @@
             top: 2px;
             right: 2px;
             font-size: 14px;
+            color: #fff;
+        }
+        .menu-info{
+            background-color: #fff;
+            color: #000;
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            display: none;
+            z-index: 2;
+            padding: 0.3em;
+            font-size: 14px;
+            min-width: 210px;
+            .btn-dl{
+                margin-left: 0.4em;
+                font-size: 15px;
+            }
+        }
+        .info:focus+.menu-info, .menu-info:hover{
+            display: block;
         }
     }
 }

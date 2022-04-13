@@ -25,10 +25,14 @@
                 flex-grow: 1;
                 outline: 2px solid black;
                 margin-block: 5px;
+                max-height: 10px;
                 .progress{
                     height: 100%;
                     background-color: var(--color-red);
                 }
+            }
+            .btn-ico{
+                font-size: 18px;
             }
         }
         .options{
@@ -37,6 +41,35 @@
             right: 0;
             button{
                 margin-inline: 0.2em;
+            }
+        }
+        .btn-ico{
+            transition: color 300ms ease;
+            &:hover{
+                color: var(--color-red);
+            }
+        }
+        .btn-menu:focus+.challenge-menu, .challenge-menu:hover{
+            display: block;
+        }
+        .challenge-menu{
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            padding: 0.3em 0.4em;
+            min-width: 90px;
+            background-color: #000;
+            display: none;
+            button{
+                border: 0;
+                outline: 0;
+                background-color: transparent;
+                cursor: pointer;
+                white-space: nowrap;
+                svg{
+                    vertical-align: bottom;
+                    font-size: 1rem;
+                }
             }
         }
     }
