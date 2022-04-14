@@ -8,64 +8,7 @@ import RecentAchievements from "./components/RecentAchievements/RecentAchievemen
 import PlayerActivity from "./components/PlayerActivity/PlayerActivity";
 
 function App() {
-    const [challenges, setChallenges] = useState(
-        [
-            {
-                id: 1,
-                title: "Kill zombies",
-                description: "Kill zombies using any method",
-				value: 10,
-                progress: 0,
-				completed: false,
-                timeCompleted: null
-            },
-			{
-                id: 2,
-                title: "Behead zombies",
-                description: "Behead zombies using sharp weapons",
-				value: 5,
-                progress: 0,
-				completed: false,
-                timeCompleted: null
-            },
-			{
-                id: 3,
-                title: "Kill zombies",
-                description: "Kill zombies using any method",
-				value: 7,
-                progress: 0,
-				completed: false,
-                timeCompleted: null
-            },
-			{
-                id: 4,
-                title: "Massacre zombies",
-                description: "Behead zombies using sharp weapons",
-				value: 20,
-                progress: 0,
-				completed: false,
-                timeCompleted: null
-            },
-			{
-                id: 5,
-                title: "Fuck up zombies",
-                description: "Kill zombies using any method",
-				value: 1,
-                progress: 0,
-				completed: false,
-                timeCompleted: null
-            },
-			{
-                id: 6,
-                title: "Lorem ipsum dolor sit amet",
-                description: "Lorem ispum dolor sit amet Lorem ispum dolor sit",
-				value: 50,
-                progress: 0,
-				completed: false,
-                timeCompleted: null
-            }
-        ]
-    );
+    const [challenges, setChallenges] = useState([]);
 	const [achievements, setAchievements] = useState([
 		{
 			name: "ACH_1",
@@ -135,20 +78,42 @@ function App() {
 		setChallenges(challenges.map(cl => {
 			if(cl.id === id){
 				cl.completed = true;
+				cl.timeCompleted = Date.now();
 			}
 			return cl
+		}));
+	}
+
+	// Remove challenge from list 
+	const removeChallenge = (id) => {
+		setChallenges(challenges.filter(cl => cl.id !== id));
+	}
+
+	// Increase the progress of challenge by 1
+	const incrementProgress = (id) => {
+		setChallenges(challenges.map(cl => {
+			if(cl.id === id) {
+				cl.progress = Math.min(cl.progress+1, cl.value);
+			}
+			return cl;
 		}));
 	}
 
 	// Add new challenge to list 
 	const addChallenge = (challenge) => {
 		challenge.id = challenges.length == 0 ? 0 : challenges[challenges.length - 1].id + 1;
+		challenge.progress = 0;
 		setChallenges(challenges.concat([challenge]));
 	}
 
-	// Remove challenge from list 
-	const removeChallenge = (id) => {
-		setChallenges(challenges.filter(cl => cl.id !== id));
+	// Return challenge from completed (set completed to false)
+	const returnChallenge = (id) => {
+		setChallenges(challenges.map(cl => {
+			if(cl.id === id){
+				cl.completed = false;
+			}
+			return cl
+		}));
 	}
 
 	// Method that runs everytime the Add new challenge form is toggled
@@ -161,18 +126,14 @@ function App() {
 			<img className="bg-img bg-city" src={require('./images/background_city.jpg')} />
 			<img className="bg-img bg-smoke" src={require('./images/smoke_cloud.png')} />
 			<img className="bg-img bg-aiden" src={require('./images/aiden_transparent_bg.png')} />
-			{ /*
-			<AddChallenge onAdd={addChallenge}></AddChallenge>
-			*/ 
-			}
 			<div className="container-divide">
 				<div className="challenges-container">
 					<div>
-						<Challenges challenges={challenges} onComplete={completeChallenge} onRemove={removeChallenge}></Challenges>
-						<AddChallenge onToggleForm={onToggleForm}></AddChallenge>
+						<Challenges challenges={challenges.filter(cl => cl.completed !== true)} onProgressIncrement={incrementProgress} onComplete={completeChallenge} onRemove={removeChallenge}></Challenges>
+						<AddChallenge onToggleForm={onToggleForm} onAdd={addChallenge}></AddChallenge>
 					</div>
 					<div className="completed">
-						<CompletedChallenges challenges={challenges} onRemove={removeChallenge}></CompletedChallenges>
+						<CompletedChallenges challenges={challenges.filter(cl => cl.completed === true)} onReturn={returnChallenge}></CompletedChallenges>
 					</div>
 				</div>
 				<div className="achievements-container">

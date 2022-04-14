@@ -15,6 +15,11 @@ const AddChallenge = ({ onAdd, onToggleForm }) => {
     const formContent = useRef(null);
     const form = useRef(null);
 
+    const titleRef = useRef(null);
+    const descRef = useRef(null);
+    const valueRef = useRef(null);
+
+
     useEffect(() => {
         form.current.style.height = `${formContent.current.clientHeight}px`;
     })
@@ -31,9 +36,9 @@ const AddChallenge = ({ onAdd, onToggleForm }) => {
             value: value
         });
 
-        setTitle("");
-        setDescription("");
-        setValue("");
+        titleRef.current.resetValue();
+        descRef.current.resetValue();
+        valueRef.current.resetValue();
     }
 
     const onShowForm = () => {
@@ -47,10 +52,10 @@ const AddChallenge = ({ onAdd, onToggleForm }) => {
     return (
         <div className="add-challenge-form-container">
             <form ref={form} onSubmit={onSubmit} className={`${showForm ? "show" : ""} ${expandedForm ? "expanded" : ""}`}>
-                <div ref={formContent}>
-                    <InputGroup id="add_Title" required={true} defaultValue={title} onChange={(e) => { setTitle(e) }} label="Title" placeholder="Kill zombies"></InputGroup>
-                    <InputGroup id="add_Desc" defaultValue={description} onChange={(e) => { setDescription(e) }} label="Description" placeholder="Kill zombies using any weapon"></InputGroup>
-                    <InputGroup id="add_Value" defaultValue={value} onChange={(e) => { setValue(e) }} type="number" label="Value" placeholder="How many times?"></InputGroup>
+                <div ref={formContent} className="form-content">
+                    <InputGroup ref={titleRef} id="add_Title" required={true} defaultValue={title} onChange={(e) => { setTitle(e) }} label="Title" placeholder="Kill zombies"></InputGroup>
+                    <InputGroup ref={descRef} id="add_Desc" defaultValue={description} onChange={(e) => { setDescription(e) }} label="Description" placeholder="Kill zombies using any weapon"></InputGroup>
+                    <InputGroup ref={valueRef} id="add_Value" defaultValue={value} onChange={(e) => { setValue(e) }} type="number" label="Value" placeholder="How many times?"></InputGroup>
                     <BtnDL text="Add challenge"></BtnDL>
                 </div>
             </form>

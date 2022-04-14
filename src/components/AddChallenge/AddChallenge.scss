@@ -12,6 +12,7 @@
             overflow: hidden;
             height: 0 !important;
         }
+      
     }
 }
 .form-toggle{
@@ -45,5 +46,17 @@
     }
     .form-toggle{
         text-align: center;
+    }
+}
+@media (max-width: 560px){
+    .add-challenge-form-container{
+        form{
+            .form-content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }            
+        }
+    
     }
 }

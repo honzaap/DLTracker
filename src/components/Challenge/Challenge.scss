@@ -29,6 +29,8 @@
                 .progress{
                     height: 100%;
                     background-color: var(--color-red);
+                    width: 1px;
+                    transition: width 200ms ease;
                 }
             }
             .btn-ico{

@@ -1,5 +1,6 @@
 .challenges-list{
-    max-height: 400px;
+    height: 400px;
+    min-width: 400px;
     overflow-y: scroll;
     padding-right: 6px;
     &::-webkit-scrollbar {
@@ -10,5 +11,12 @@
     }
     &::-webkit-scrollbar-thumb {
         background: #FFF;
+    }
+}
+@media (max-width: 560px){
+    .challenges-list{
+        min-width: auto;
+        height: auto;
+        max-height: 400px;
     }
 }

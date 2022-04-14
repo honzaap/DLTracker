@@ -6,6 +6,8 @@
     max-height: 300px;
     overflow-y: scroll;
     padding-right: 8px;
+    min-width: 340px;
+    min-height: 200px;
     &::-webkit-scrollbar {
         width: 6px;
     }
@@ -28,5 +30,7 @@
     }
     .completed-challenges-list{
         gap: 4px;
+        min-width: auto;
+        min-height: 140px;
     }
 }
