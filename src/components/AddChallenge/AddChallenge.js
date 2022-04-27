@@ -53,8 +53,8 @@ const AddChallenge = ({ onAdd, onToggleForm }) => {
         <div className="add-challenge-form-container">
             <form ref={form} onSubmit={onSubmit} className={`${showForm ? "show" : ""} ${expandedForm ? "expanded" : ""}`}>
                 <div ref={formContent} className="form-content">
-                    <InputGroup ref={titleRef} id="add_Title" required={true} defaultValue={title} onChange={(e) => { setTitle(e) }} label="Title" placeholder="Kill zombies"></InputGroup>
-                    <InputGroup ref={descRef} id="add_Desc" defaultValue={description} onChange={(e) => { setDescription(e) }} label="Description" placeholder="Kill zombies using any weapon"></InputGroup>
+                    <InputGroup ref={titleRef} id="add_Title" maxLength={30} required={true} defaultValue={title} onChange={(e) => { setTitle(e) }} label="Title" placeholder="Kill zombies"></InputGroup>
+                    <InputGroup ref={descRef} id="add_Desc" maxLength={85} defaultValue={description} onChange={(e) => { setDescription(e) }} label="Description" placeholder="Kill zombies using any weapon"></InputGroup>
                     <InputGroup ref={valueRef} id="add_Value" defaultValue={value} onChange={(e) => { setValue(e) }} type="number" label="Value" placeholder="How many times?"></InputGroup>
                     <BtnDL text="Add challenge"></BtnDL>
                 </div>

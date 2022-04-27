@@ -8,7 +8,12 @@ import RecentAchievements from "./components/RecentAchievements/RecentAchievemen
 import PlayerActivity from "./components/PlayerActivity/PlayerActivity";
 
 function App() {
-    const [challenges, setChallenges] = useState([]);
+	// Local storage key
+	const CHALLENGES_KEY = "DLTchallenges";
+
+	let lsChallenges = localStorage.getItem(CHALLENGES_KEY);
+	
+    const [challenges, setChallenges] = useState(lsChallenges == null ? [] : JSON.parse(lsChallenges));
 	const [achievements, setAchievements] = useState([
 		{
 			name: "ACH_1",
@@ -116,10 +121,21 @@ function App() {
 		}));
 	}
 
-	// Method that runs everytime the Add new challenge form is toggled
+	// Runs when the Add new challenge form is toggled
 	const onToggleForm = (isFormHidden) => {
 		setIsActivityCompact(!isFormHidden);
 	}
+
+	// Save challenges to local storage
+	const saveChallenges = () => {
+		console.log("saving: " + challenges)
+		localStorage.setItem(CHALLENGES_KEY, JSON.stringify(challenges));
+	}
+
+	// Call saveChallenges every time challenges property changes
+	useEffect(() => {
+		saveChallenges();
+	}, [challenges])
 
 	return (
 		<>	
