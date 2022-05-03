@@ -6,6 +6,8 @@ import CompletedChallenges from "./components/CompletedChallenges/CompletedChall
 import Achievements from "./components/Achievements/Achievements";
 import RecentAchievements from "./components/RecentAchievements/RecentAchievements";
 import PlayerActivity from "./components/PlayerActivity/PlayerActivity";
+import { getAchievements } from "./services/achievementService";
+import { getPlayerActivity } from "./services/playerActivityService";
 
 function App() {
 	// Local storage key
@@ -14,69 +16,17 @@ function App() {
 	let lsChallenges = localStorage.getItem(CHALLENGES_KEY);
 	
     const [challenges, setChallenges] = useState(lsChallenges == null ? [] : JSON.parse(lsChallenges));
-	const [achievements, setAchievements] = useState([
-		{
-			name: "ACH_1",
-			displayName: "Flight of The Crane",
-			description: "Lorem ipsum dolor sit amet",
-			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
-		},
-		{
-			name: "ACH_2",
-			hidden: 1,
-			displayName: "Lorem ipsum",
-			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
-		},
-		{
-			name: "ACH_3",
-			description: "Lorem ipsum dolor sit amet",
-			displayName: "Lorem dorem korem holem dolem",
-			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
-		},
-		{
-			name: "ACH_4",
-			hidden: 1,
-			displayName: "Cock",
-			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
-		},
-		{
-			name: "ACH_5",
-			description: "Lorem ipsum dolor sit amet",
-			displayName: "Flight of The Crane",
-			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
-		},
-		{
-			name: "ACH_6",
-			description: "Lorem ipsum dolor sit amet",
-			displayName: "Flight of The Crane",
-			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
-		},
-		{
-			name: "ACH_7",
-			hidden: 1,
-			displayName: "Flight of The Crane",
-			icongray: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/239140/7786b7c4c55a6f38c56f915726b156fdb78e738d.jpg",
-		},
-	]);
+	const [achievements, setAchievements] = useState([]);
 	const [isActivityCompact, setIsActivityCompact] = useState(false);
+	
+	// Player activity stats
+	const [activity, setActivity] = useState({});
 
-	// Fetch achievements on load 
-	useEffect(() => {
-		const getAchievements = async () => {
-			const achievements = await fetchAchievements();
-			setAchievements(achievements);
-		}
-
+	// Get achievements and user stats on load 
+	useEffect(async () => {
+		//getPlayerActivity();
 		//getAchievements();
 	}, []);
-
-	// Fetch achievements
-	const fetchAchievements = async () => {
-		const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-		const data = await res.json();
-
-		return data;
-	}
 
 	// Set challenge as completed
 	const completeChallenge = (id) => {
@@ -128,7 +78,6 @@ function App() {
 
 	// Save challenges to local storage
 	const saveChallenges = () => {
-		console.log("saving: " + challenges)
 		localStorage.setItem(CHALLENGES_KEY, JSON.stringify(challenges));
 	}
 

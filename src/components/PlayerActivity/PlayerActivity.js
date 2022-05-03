@@ -21,7 +21,7 @@ const PlayerActivity = ({isCompact}) => {
             <p className="status offline"><FaMinusCircle></FaMinusCircle>  <span className={isCompact ? "hide" : ""}>Offline</span></p>*/}
 
             <p className={!isCompact ? "show" : ""} ref={timePlayedLabel}><span className="label">Time played:</span> <span className="text-red">15h</span></p>
-            <p className={!isCompact ? "show" : ""} ref={lastPlayedLabel}><span className="label">Last played:</span> <span className="text-red">Today</span></p>
+            <p className={!isCompact ? "show" : ""} ref={lastPlayedLabel}><span className="label">Last 2 weeeks:</span> <span className="text-red">3h</span></p>
         </div>
     )
 }
