@@ -5,7 +5,7 @@ export const getAchievements = async () => {
     let playerAchievements = await fetchPlayerAchievements();
 
     playerAchievements = playerAchievements.map(pa => {
-        let scheme = achievements.filter(a => a.apiname === pa.name)[0];
+        let scheme = achievements.filter(a => a.name === pa.apiname)[0];
         if(scheme){
             pa.displayName = scheme.displayName;
             pa.description = scheme.description;
@@ -13,6 +13,6 @@ export const getAchievements = async () => {
         }
         return pa;
     })
-    console.log(playerAchievements);
+
     return playerAchievements
 }

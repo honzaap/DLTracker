@@ -6,9 +6,9 @@ export const getPlayerActivity = async () => {
     let stats = await fetchUserStats();
     let games = await fetchUserGames();
     
-    playerActivity.gameID = stats.gameid;
-    playerActivity.gameName = stats.gameextrainfo;
-    playerActivity.state = stats.personastate
+    playerActivity.gameid = stats.gameid; // can be null
+    playerActivity.gameName = stats.gameextrainfo; // can be null
+    playerActivity.state = stats.personastate // 1 or 0 (online/offline)
 
     let dl2 = games.filter(g => g.appid === DL2_ID)[0];
     if(dl2){

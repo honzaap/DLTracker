@@ -8,7 +8,7 @@ export const fetchGameAchievements = async () => {
     const data = await res.json();
     if(data.game){
         if(data.game.availableGameStats.achievements){
-            return data.availableGameStats.achievements;
+            return data.game.availableGameStats.achievements;
         }
     }
 

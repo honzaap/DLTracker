@@ -1,6 +1,8 @@
 import "./RecentAchievements.scss";
 
 const RecentAchievements = ({achievements}) => {
+    achievements = achievements.filter(ac => ac.achieved === 1);
+    achievements.sort((a, b) => b.unlocktime - a.unlocktime);
     return (
         <>
             <h4 className="text-black recent-title">Recently Completed</h4>

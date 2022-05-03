@@ -24,8 +24,8 @@ function App() {
 
 	// Get achievements and user stats on load 
 	useEffect(async () => {
-		//getPlayerActivity();
-		//getAchievements();
+		setActivity(await getPlayerActivity());
+		setAchievements(await getAchievements());
 	}, []);
 
 	// Set challenge as completed
@@ -111,7 +111,7 @@ function App() {
 				</div>
 			</div>
 			<div className="activity">
-				<PlayerActivity isCompact={isActivityCompact}></PlayerActivity>
+				<PlayerActivity activity={activity} isCompact={isActivityCompact}></PlayerActivity>
 			</div>
 		</>
 	);
