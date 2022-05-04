@@ -1,7 +1,7 @@
 import { useState, forwardRef, useImperativeHandle } from "react";
 import "./InputGroup.scss";
 
-const InputGroup = forwardRef(({id, onChange, label, placeholder, defaultValue, required, type="text", maxLength}, ref) => {
+const InputGroup = forwardRef(({id, onChange, label, placeholder, defaultValue, required, type="text", maxLength, dark=false}, ref) => {
     const [fieldFocus, setFieldFocus] = useState("");
     const [value, setValue] = useState(defaultValue);
 
@@ -17,7 +17,7 @@ const InputGroup = forwardRef(({id, onChange, label, placeholder, defaultValue, 
     }
 
     return (
-        <div className="input-group">
+        <div className={`input-group ${dark ? "dark" : ""}`}>
             <label className={fieldFocus ? "focus" : ""} htmlFor={id}>{label}</label>
             <div className="input-wrap">
                 <input maxLength={maxLength} required={required} id={id} type={type} placeholder={placeholder} value={value} onFocus={() => {setFieldFocus(true)}}

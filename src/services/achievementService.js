@@ -1,8 +1,8 @@
 import { fetchGameAchievements, fetchPlayerAchievements} from "../api/steamAPI";
 
-export const getAchievements = async () => {
+export const getAchievements = async (steamid) => {
     let achievements = await fetchGameAchievements();
-    let playerAchievements = await fetchPlayerAchievements();
+    let playerAchievements = await fetchPlayerAchievements(steamid);
 
     playerAchievements = playerAchievements.map(pa => {
         let scheme = achievements.filter(a => a.name === pa.apiname)[0];

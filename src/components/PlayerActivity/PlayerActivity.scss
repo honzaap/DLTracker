@@ -29,6 +29,16 @@
         }
         &.show{
             transform: none !important;
+            &.user{
+                .icon{
+                    opacity: 0;
+                }
+            }
+        }
+        &.user{
+            .icon{
+                transition: opacity 300ms ease;
+            }
         }
     }
 }

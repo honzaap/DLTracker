@@ -9,7 +9,7 @@ const RecentAchievements = ({achievements}) => {
             <div className="recent-list-container">
                 <div className="recent-list">
                     {achievements.slice(0, 4).map(achievement => (
-                        <div key={achievement.name}>
+                        <div key={achievement.apiname}>
                             {achievement.displayName}
                         </div>
                     ))}

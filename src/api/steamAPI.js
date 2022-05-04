@@ -15,10 +15,9 @@ export const fetchGameAchievements = async () => {
     return [];
 }
 
-export const fetchPlayerAchievements = async () => {
+export const fetchPlayerAchievements = async (steamid) => {
     const functionName = "fetchPlayerAchievements";
-    const userId = "76561198973679840"; // temporary
-    let url = `${API_URL}?function=${functionName}&steamid=${userId}`;
+    let url = `${API_URL}?function=${functionName}&steamid=${steamid}`;
 
     const res = await fetch(url);
     const data = await res.json();
@@ -31,10 +30,9 @@ export const fetchPlayerAchievements = async () => {
     return [];
 }
 
-export const fetchUserStats = async () => {
+export const fetchUserStats = async (steamid) => {
     const functionName = "fetchUserStats";
-    const userId = "76561198973679840"; // temporary
-    let url = `${API_URL}?function=${functionName}&steamid=${userId}`;
+    let url = `${API_URL}?function=${functionName}&steamid=${steamid}`;
 
     const res = await fetch(url);
     const data = await res.json();
@@ -47,10 +45,9 @@ export const fetchUserStats = async () => {
     return {};
 }
 
-export const fetchUserGames = async () => {
+export const fetchUserGames = async (steamid) => {
     const functionName = "fetchUserGames";
-    const userId = "76561198973679840"; // temporary
-    let url = `${API_URL}?function=${functionName}&steamid=${userId}`;
+    let url = `${API_URL}?function=${functionName}&steamid=${steamid}`;
 
     const res = await fetch(url);
     const data = await res.json();
@@ -61,4 +58,14 @@ export const fetchUserGames = async () => {
     }
 
     return [];
+}
+
+export const fetchSteamidFromCustomUrl = async (urlUsername) => {
+    const functionName = "fetchSteamidFromCustomUrl";
+    let url = `${API_URL}?function=${functionName}&vanityurl=${urlUsername}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+    
+    return data.response.steamid;
 }

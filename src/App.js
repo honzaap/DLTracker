@@ -8,25 +8,50 @@ import RecentAchievements from "./components/RecentAchievements/RecentAchievemen
 import PlayerActivity from "./components/PlayerActivity/PlayerActivity";
 import { getAchievements } from "./services/achievementService";
 import { getPlayerActivity } from "./services/playerActivityService";
+import { DEFAULT_CHALLENGES } from "./services/constants";
 
 function App() {
-	// Local storage key
+	// Local storage keys
 	const CHALLENGES_KEY = "DLTchallenges";
+	const DEFAULT_CH_KEY = "DLTLoaded";
+	const STEAM_ID_KEY = "DLTSteamID";
 
-	let lsChallenges = localStorage.getItem(CHALLENGES_KEY);
-	
-    const [challenges, setChallenges] = useState(lsChallenges == null ? [] : JSON.parse(lsChallenges));
+	let steamidLs = localStorage.getItem(STEAM_ID_KEY);
+	let lsChallenges;
+	try{
+		lsChallenges = JSON.parse(localStorage.getItem(CHALLENGES_KEY));
+	}
+	catch{
+		lsChallenges = [];
+	}
+	let defaultLoaded = localStorage.getItem(DEFAULT_CH_KEY);
+
+    const [challenges, setChallenges] = useState(lsChallenges == null ? (defaultLoaded == null ? DEFAULT_CHALLENGES : []) : lsChallenges);
 	const [achievements, setAchievements] = useState([]);
 	const [isActivityCompact, setIsActivityCompact] = useState(false);
+	const [steamid, setSteamid] = useState(steamidLs);
 	
 	// Player activity stats
 	const [activity, setActivity] = useState({});
 
 	// Get achievements and user stats on load 
 	useEffect(async () => {
-		setActivity(await getPlayerActivity());
-		setAchievements(await getAchievements());
+		// Init achievements and stas
+		if(steamid != null){
+			setActivity(await getPlayerActivity(steamid));
+			setAchievements(await getAchievements(steamid));
+		}
+		// Shor pulling from API every 20s
+		setInterval(async () => {
+			if(steamid != null){
+				setActivity(await getPlayerActivity());
+				setAchievements(await getAchievements());
+			}
+		}, 20000);
+		
+		localStorage.setItem(DEFAULT_CH_KEY, true);
 	}, []);
+	
 
 	// Set challenge as completed
 	const completeChallenge = (id) => {
@@ -103,7 +128,7 @@ function App() {
 				</div>
 				<div className="achievements-container">
 					<div className="achievements">
-						<Achievements achievements={achievements}></Achievements>
+						<Achievements achievements={achievements} loggedIn={steamid != null}></Achievements>
 					</div>
 					<div className="recent">
 						<RecentAchievements achievements={achievements}></RecentAchievements>
