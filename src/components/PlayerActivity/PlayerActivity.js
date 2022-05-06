@@ -1,9 +1,9 @@
 import "./PlayerActivity.scss";
-import { FaRegDotCircle, FaMinusCircle, FaUser } from "react-icons/fa";
+import { FaRegDotCircle, FaMinusCircle, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { useRef, useEffect } from "react";
 import { DL2_ID } from "../../services/constants"
 
-const PlayerActivity = ({isCompact, activity}) => {
+const PlayerActivity = ({isCompact, activity, signOut = () => {}}) => {
 
     const userLabel = useRef(null);
     const timePlayedLabel = useRef(null);
@@ -18,6 +18,7 @@ const PlayerActivity = ({isCompact, activity}) => {
 
     return (
         <div className="player-activity-container">
+            {activity.state != null && <button title="Change user" className={`signout ${isCompact ? "hide" : ""}`} onClick={signOut}><FaSignOutAlt></FaSignOutAlt></button>}
             <p className={!isCompact ? "show user" : "user"} ref={userLabel}>
                 <span className="label">{activity.name}</span> 
                 <span className="icon"><FaUser></FaUser></span>

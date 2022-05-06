@@ -9,6 +9,7 @@ import PlayerActivity from "./components/PlayerActivity/PlayerActivity";
 import { getAchievements } from "./services/achievementService";
 import { getPlayerActivity } from "./services/playerActivityService";
 import { DEFAULT_CHALLENGES } from "./services/constants";
+import useInterval from "./services/utils/useInterval";
 
 function App() {
 	// Local storage keys
@@ -34,24 +35,18 @@ function App() {
 	// Player activity stats
 	const [activity, setActivity] = useState({});
 
-	// Get achievements and user stats on load 
+	// On mount
 	useEffect(async () => {
-		// Init achievements and stas
-		if(steamid != null){
+		localStorage.setItem(DEFAULT_CH_KEY, true);
+	}, []);
+
+	// Fetch new data every 15 seconds
+	useInterval(async () => {
+		if(steamid){
 			setActivity(await getPlayerActivity(steamid));
 			setAchievements(await getAchievements(steamid));
 		}
-		// Shor pulling from API every 20s
-		setInterval(async () => {
-			if(steamid != null){
-				setActivity(await getPlayerActivity());
-				setAchievements(await getAchievements());
-			}
-		}, 20000);
-		
-		localStorage.setItem(DEFAULT_CH_KEY, true);
-	}, []);
-	
+	}, 15000);
 
 	// Set challenge as completed
 	const completeChallenge = (id) => {
@@ -106,10 +101,32 @@ function App() {
 		localStorage.setItem(CHALLENGES_KEY, JSON.stringify(challenges));
 	}
 
+	// Sets the steamid of user and save it to localStorage
+	const setUser = (userSteamid) => {
+		setSteamid(userSteamid);
+		localStorage.setItem(STEAM_ID_KEY, userSteamid);
+	}
+
+	// Remove user and set achievements and stats to default
+	const signOut = () => {
+		setSteamid(null);
+		setAchievements([]);
+		setActivity({});
+		localStorage.setItem(STEAM_ID_KEY, "");
+	}
+
 	// Call saveChallenges every time challenges property changes
 	useEffect(() => {
 		saveChallenges();
 	}, [challenges])
+
+	// Fetch new achievements and stats when steamid changes
+	useEffect(async () => {
+		if(steamid){
+			setAchievements(await getAchievements(steamid));
+			setActivity(await getPlayerActivity(steamid));
+		}
+	}, [steamid])
 
 	return (
 		<>	
@@ -128,7 +145,7 @@ function App() {
 				</div>
 				<div className="achievements-container">
 					<div className="achievements">
-						<Achievements achievements={achievements} loggedIn={steamid != null}></Achievements>
+						<Achievements setUser={setUser} achievements={achievements} loggedIn={steamid != null && steamid != ""}></Achievements>
 					</div>
 					<div className="recent">
 						<RecentAchievements achievements={achievements}></RecentAchievements>
@@ -136,7 +153,7 @@ function App() {
 				</div>
 			</div>
 			<div className="activity">
-				<PlayerActivity activity={activity} isCompact={isActivityCompact}></PlayerActivity>
+				<PlayerActivity activity={activity} isCompact={isActivityCompact} signOut={signOut}></PlayerActivity>
 			</div>
 		</>
 	);

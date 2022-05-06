@@ -22,24 +22,7 @@
         background: #000;
     }
 }
-.login-container{
-    color: #000;
-    height: 420px;
-    .login-form{
 
-    }
-    .login-confirm{
-        button{
-
-        }
-        .confirm{
-
-        }
-        .cancel{
-
-        }
-    }
-}
 @media (max-width: 1439px){
     .completed-count{
         color: #fff;
@@ -47,10 +30,6 @@
 }
 @media (max-width: 1023px){
     .achievements-list{
-        height: auto;
-        max-height: 420px;
-    }
-    .login-container{
         height: auto;
         max-height: 420px;
     }
