@@ -9,6 +9,7 @@ import PlayerActivity from "./components/PlayerActivity/PlayerActivity";
 import { getAchievements } from "./services/achievementService";
 import { getPlayerActivity } from "./services/playerActivityService";
 import { DEFAULT_CHALLENGES } from "./services/constants";
+import GithubCorner from "react-github-corner";
 import useInterval from "./services/utils/useInterval";
 
 function App() {
@@ -155,6 +156,7 @@ function App() {
 			<div className="activity">
 				<PlayerActivity activity={activity} isCompact={isActivityCompact} signOut={signOut}></PlayerActivity>
 			</div>
+			<GithubCorner href="https://github.com/honzaap/dltracker"></GithubCorner>
 		</>
 	);
 }
