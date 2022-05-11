@@ -11,7 +11,9 @@ import { getPlayerActivity } from "./services/playerActivityService";
 import { DEFAULT_CHALLENGES } from "./services/constants";
 import GithubCorner from "react-github-corner";
 import useInterval from "./services/utils/useInterval";
-
+import BG_IMG from "./images/background_city.jpg";
+import BG_SMOKE from "./images/smoke_cloud.png";
+import BG_AIDEN from "./images/aiden_transparent_bg.png";
 function App() {
 	// Local storage keys
 	const CHALLENGES_KEY = "DLTchallenges";
@@ -131,9 +133,9 @@ function App() {
 
 	return (
 		<>	
-			<img className="bg-img bg-city" src={require('./images/background_city.jpg')} />
-			<img className="bg-img bg-smoke" src={require('./images/smoke_cloud.png')} />
-			<img className="bg-img bg-aiden" src={require('./images/aiden_transparent_bg.png')} />
+			<img className="bg-img bg-city" src={BG_IMG} />
+			<img className="bg-img bg-smoke" src={BG_SMOKE} />
+			<img className="bg-img bg-aiden" src={BG_AIDEN} />
 			<div className="container-divide">
 				<div className="challenges-container">
 					<div>
